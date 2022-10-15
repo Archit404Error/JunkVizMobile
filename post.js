@@ -1,28 +1,30 @@
-import React from "react"
-import { View, StyleSheet, Image, Text, TouchableOpacity } from "react-native"
-import { globalStyles } from "./globalStyles"
+import React from "react";
+import {View, StyleSheet, Image, Text, TouchableOpacity} from "react-native";
+import {globalStyles} from "./globalStyles";
 
-export default ({ location, time, img, navigation }) => {
-    const date = new Date(time)
+export default ({id, location, time, img, navigation, status}) => {
+    const date = new Date(time);
     return (
         <TouchableOpacity
             onPress={() => {
                 navigation.navigate("Details", {
+                    id: id,
                     location: location,
                     image: img,
-                })
+                    status: status
+                });
             }}
             style={styles.container}
         >
-            <Image source={{ uri: img }} style={globalStyles.curvedImg} />
+            <Image source={{uri: img}} style={globalStyles.curvedImg} />
             <View style={globalStyles.smallPadView}>
                 <Text style={globalStyles.subHeader}>Location: {location}</Text>
                 <Text style={globalStyles.smallHeader}>Date: {date.toDateString()}</Text>
                 <Text style={globalStyles.smallHeader}>Time: {date.toTimeString()}</Text>
             </View>
         </TouchableOpacity>
-    )
-}
+    );
+};
 
 const styles = StyleSheet.create({
     container: {
@@ -33,4 +35,4 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         marginBottom: 20,
     }
-})
+});
