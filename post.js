@@ -5,7 +5,15 @@ import { globalStyles } from "./globalStyles"
 export default ({ location, time, img, navigation }) => {
     const date = new Date(time)
     return (
-        <TouchableOpacity onPress={() => navigation.navigate("Details")} style={styles.container}>
+        <TouchableOpacity
+            onPress={() => {
+                navigation.navigate("Details", {
+                    location: location,
+                    image: img,
+                })
+            }}
+            style={styles.container}
+        >
             <Image source={{ uri: img }} style={globalStyles.curvedImg} />
             <View style={globalStyles.smallPadView}>
                 <Text style={globalStyles.subHeader}>Location: {location}</Text>
