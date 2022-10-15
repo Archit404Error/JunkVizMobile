@@ -4,7 +4,7 @@ import { SafeAreaView, ScrollView, StyleSheet, Text } from 'react-native';
 import { globalStyles } from './globalStyles';
 import Post from './post';
 
-export default () => {
+export default ({ navigation }) => {
   const [posts, setPosts] = useState([]);
   useEffect(() => {
     fetch('https://trash-detect-backend-pratyush1712.vercel.app/all-points')
@@ -16,13 +16,16 @@ export default () => {
     <SafeAreaView style={styles.container}>
       <ScrollView style={{ paddingLeft: 20, paddingRight: 20, }}>
         <Text style={globalStyles.header}>Trash Detect</Text>
-        <Post
-          location="test"
-          img="https://st.depositphotos.com/1005914/2556/i/450/depositphotos_25567715-stock-photo-garbage-and-seagulls.jpg"
-          time="10-14-22 11:20 am"
-        />
         {
-          posts.map(post => <Post location={post.location} img={post.image} time={post.time.$date} />)
+          posts.map(post =>
+            <Post
+              key={post._id.$oid}
+              location={post.location}
+              img={post.image}
+              time={post.time.$date}
+              navigation={navigation}
+            />
+          )
         }
         <StatusBar style="auto" />
       </ScrollView>
@@ -32,6 +35,7 @@ export default () => {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     backgroundColor: '#fff',
     paddingTop: 60,
   },
