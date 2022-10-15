@@ -7,7 +7,7 @@ import Post from './post';
 export default () => {
   const [posts, setPosts] = useState([]);
   useEffect(() => {
-    fetch('https://deployed-backend.com/posts/post')
+    fetch('https://trash-detect-backend-pratyush1712.vercel.app/all-points')
       .then(res => res.json())
       .then(json => setPosts(json));
   }, [])
@@ -22,7 +22,7 @@ export default () => {
           time="10-14-22 11:20 am"
         />
         {
-          posts.map(post => <Post location={post.location} img={post.image} time={post.time} />)
+          posts.map(post => <Post location={post.location} img={post.image} time={post.time.$date} />)
         }
         <StatusBar style="auto" />
       </ScrollView>
