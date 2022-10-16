@@ -38,6 +38,6 @@ function HomeStack() {
 }
 
 export default function App() {
-    // useEffect(() => { registerPushNotifs() }, [])
+    useEffect(() => { registerPushNotifs() }, [])
     return <HomeStack />
 }
