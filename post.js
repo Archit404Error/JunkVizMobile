@@ -1,8 +1,8 @@
-import React from "react";
-import {View, StyleSheet, Image, Text, TouchableOpacity} from "react-native";
-import {globalStyles} from "./globalStyles";
+import React, { useEffect, useState } from "react";
+import { View, StyleSheet, Image, Text, TouchableOpacity } from "react-native";
+import { globalStyles } from "./globalStyles";
 
-export default ({id, location, time, img, navigation, status}) => {
+export default ({ id, location, time, img, navigation, status }) => {
     const date = new Date(time);
     return (
         <TouchableOpacity
@@ -16,7 +16,7 @@ export default ({id, location, time, img, navigation, status}) => {
             }}
             style={styles.container}
         >
-            <Image source={{uri: img}} style={globalStyles.curvedImg} />
+            <Image source={{ uri: img }} style={globalStyles.curvedImg} />
             <View style={globalStyles.smallPadView}>
                 <Text style={globalStyles.subHeader}>Location: {location}</Text>
                 <Text style={globalStyles.smallHeader}>Date: {date.toDateString()}</Text>

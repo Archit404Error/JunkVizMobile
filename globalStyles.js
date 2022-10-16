@@ -14,7 +14,7 @@ export const globalStyles = StyleSheet.create({
         padding: 5
     },
     curvedImg: {
-        height: 100,
+        height: 200,
         width: null,
         flex: 1,
         borderTopLeftRadius: 10,
